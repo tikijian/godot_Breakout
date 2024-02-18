@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c528726t2bfov"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_hvm2t"]
+[ext_resource type="Texture2D" uid="uid://ct632yo7a2vmi" path="res://breakout_pieces.png" id="1_rbdd7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pafw8"]
+size = Vector2(64, 15)
+
+[node name="Player" type="CharacterBody2D"]
+slide_on_ceiling = false
+script = ExtResource("1_hvm2t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_rbdd7")
+region_enabled = true
+region_rect = Rect2(8, 176, 64, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_pafw8")

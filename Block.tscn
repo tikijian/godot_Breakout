@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpr0ef8jq3yni"]
+
+[ext_resource type="Script" path="res://Scripts/Block.gd" id="1_etmxk"]
+[ext_resource type="Texture2D" uid="uid://ct632yo7a2vmi" path="res://breakout_pieces.png" id="1_qv77c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ygvt4"]
+size = Vector2(32, 18)
+
+[node name="Block" type="StaticBody2D"]
+script = ExtResource("1_etmxk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+editor_description = "Destroyable block"
+texture_filter = 1
+texture = ExtResource("1_qv77c")
+region_enabled = true
+region_rect = Rect2(8, 8, 32, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ygvt4")

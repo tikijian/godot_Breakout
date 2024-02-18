@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv18gq1cjcsi3"]
+
+[ext_resource type="PackedScene" uid="uid://c528726t2bfov" path="res://Player.tscn" id="1_5d8t2"]
+[ext_resource type="Script" path="res://Scripts/Game.gd" id="1_n5kdx"]
+[ext_resource type="PackedScene" uid="uid://dvjvtfq18p75t" path="res://Ball.tscn" id="3_afwll"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ig02i"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vhd1o"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_j5w30"]
+
+[node name="GameRoot" type="Node"]
+script = ExtResource("1_n5kdx")
+
+[node name="Player" parent="." instance=ExtResource("1_5d8t2")]
+editor_description = "Player controlled paddle"
+position = Vector2(320, 456)
+collision_mask = 2
+
+[node name="Ball" parent="." instance=ExtResource("3_afwll")]
+position = Vector2(320, 432)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(0, 224)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_ig02i")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(320, 0)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_vhd1o")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2(640, 224)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_j5w30")
